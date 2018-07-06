@@ -2,6 +2,8 @@ import * as React from "react";
 import { render } from "react-dom";
 import Hello from "./Hello";
 
+import "./water.css";
+
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center"
@@ -66,7 +68,7 @@ class H2O extends React.Component {
   render() {
     return (
       <div style={styles}>
-        <h2>
+        <h2 className={this.getStateOfH2O(this.state.temp)}>
           温度: {this.state.temp}, 状態: {this.state.property}
         </h2>
         <h2>
