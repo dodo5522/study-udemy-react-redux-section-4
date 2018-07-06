@@ -12,38 +12,70 @@ interface ITemperature {
 }
 
 class H2O extends React.Component {
-  state: ITemperature = { temp: 0 };
+  state: ITemperature = { temp: 0, property: "" };
 
   constructor(props) {
     super(props);
-    console.log(JSON.stringify(props));
-    this.state = { temp: 15 };
+    this.state = { temp: 15, property: this.getStateOfH2O(15) };
   }
 
   onButtonClickPlusOne = () => {
-    this.setState({temp: this.state.temp + 1;});
+    const newTemp = this.state.temp + 1;
+    this.setState({
+      temp: newTemp,
+      property: this.getStateOfH2O(newTemp)
+    });
   };
 
   onButtonClickPlusTen = () => {
-    this.setState({temp: this.state.temp + 10});
+    const newTemp = this.state.temp + 10;
+    this.setState({
+      temp: newTemp,
+      property: this.getStateOfH2O(newTemp)
+    });
   };
 
   onButtonClickMinusOne = () => {
-    this.setState({temp: this.state.temp - 1});
+    const newTemp = this.state.temp - 1;
+    this.setState({
+      temp: newTemp,
+      property: this.getStateOfH2O(newTemp)
+    });
   };
 
   onButtonClickMinusTen = () => {
-    this.setState({temp: this.state.temp - 10});
+    const newTemp = this.state.temp - 10;
+    this.setState({
+      temp: newTemp,
+      property: this.getStateOfH2O(newTemp)
+    });
   };
+
+  getStateOfH2O(temp: Number): String {
+    let stateOfWater = "gas";
+
+    if (temp < 0) {
+      stateOfWater = "solid";
+    } else if (0 <= temp && temp < 100) {
+      stateOfWater = "liquid";
+    }
+
+    return stateOfWater;
+  }
 
   render() {
     return (
       <div style={styles}>
-        <h2>温度: {this.state.temp}</h2>
-        <button onClick={this.onButtonClickPlusOne}>+1</button>
-        <button onClick={this.onButtonClickPlusTen}>+10</button>
-        <button onClick={this.onButtonClickMinusTen}>-10</button>
-        <button onClick={this.onButtonClickMinusOne}>-1</button>
+        <h2>
+          温度: {this.state.temp}, 状態: {this.state.property}
+        </h2>
+        <h2>
+          操作:
+          <button onClick={this.onButtonClickPlusOne}>+1</button>
+          <button onClick={this.onButtonClickPlusTen}>+10</button>
+          <button onClick={this.onButtonClickMinusTen}>-10</button>
+          <button onClick={this.onButtonClickMinusOne}>-1</button>
+        </h2>
       </div>
     );
   }
