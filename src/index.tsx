@@ -11,17 +11,21 @@ const styles = {
 
 interface ITemperature {
   temp: Number;
+  property: String;
 }
 
 class H2O extends React.Component {
-  state: ITemperature = { temp: 0, property: "" };
+  state: ITemperature = {
+    temp: 0,
+    property: ""
+  };
 
   constructor(props) {
     super(props);
     this.state = { temp: 15, property: this.getStateOfH2O(15) };
   }
 
-  onButtonClickPlusOne = () => {
+  private onButtonClickPlusOne = () => {
     const newTemp = this.state.temp + 1;
     this.setState({
       temp: newTemp,
@@ -29,7 +33,7 @@ class H2O extends React.Component {
     });
   };
 
-  onButtonClickPlusTen = () => {
+  private onButtonClickPlusTen = () => {
     const newTemp = this.state.temp + 10;
     this.setState({
       temp: newTemp,
@@ -37,7 +41,7 @@ class H2O extends React.Component {
     });
   };
 
-  onButtonClickMinusOne = () => {
+  private onButtonClickMinusOne = () => {
     const newTemp = this.state.temp - 1;
     this.setState({
       temp: newTemp,
@@ -45,7 +49,7 @@ class H2O extends React.Component {
     });
   };
 
-  onButtonClickMinusTen = () => {
+  private onButtonClickMinusTen = () => {
     const newTemp = this.state.temp - 10;
     this.setState({
       temp: newTemp,
@@ -53,7 +57,7 @@ class H2O extends React.Component {
     });
   };
 
-  getStateOfH2O(temp: Number): String {
+  private getStateOfH2O(temp: Number): String {
     let stateOfWater = "gas";
 
     if (temp < 0) {
@@ -65,7 +69,7 @@ class H2O extends React.Component {
     return stateOfWater;
   }
 
-  render() {
+  private render() {
     return (
       <div style={styles}>
         <h2 className={this.getStateOfH2O(this.state.temp)}>
