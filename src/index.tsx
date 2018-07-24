@@ -76,7 +76,6 @@ class H2O extends React.Component {
           温度: {this.state.temp}, 状態: {this.state.property}
         </h2>
         <h2>
-          操作:
           <button onClick={this.onButtonClickPlusOne}>+1</button>
           <button onClick={this.onButtonClickPlusTen}>+10</button>
           <button onClick={this.onButtonClickMinusTen}>-10</button>
